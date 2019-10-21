@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://itq.edu/soa/amTable" targetNamespace="http://itq.edu/soa/amTable">
+	<wsdl:types>
+		<xs:schema targetNamespace="http://itq.edu/soa/amTable" elementFormDefault="qualified">
+			<xs:include schemaLocation="amTable.xsd"></xs:include>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="amortizationMessageRequest">
+		<wsdl:part name="parameter" element="tns:request"/>
+	</wsdl:message>
+	<wsdl:message name="amortizationMessageResponse">
+		<wsdl:part name="parameter" element="tns:response"/>
+	</wsdl:message>
+	<wsdl:portType name="amortizationPortType">
+		<wsdl:operation name="amortizationOperation">
+			<wsdl:input message="tns:amortizationMessageRequest"/>
+			<wsdl:output message="tns:amortizationMessageResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="amortizationBinding" type="tns:amortizationPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="amortizationOperation">
+			<soap:operation soapAction="http://itq.edu/soa/amTable/amortizationOperation"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="amortizationService">
+		<wsdl:port name="amortizationPort" binding="tns:amortizationBinding">
+			<soap:address location="http://localhost:8080/axis2/services/amortizationService"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

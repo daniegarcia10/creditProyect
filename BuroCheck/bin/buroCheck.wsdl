@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://itq.edu/soa/buroCheck" targetNamespace="http://itq.edu/soa/buroCheck">
+	<wsdl:types>
+		<xs:schema targetNamespace="http://itq.edu/soa/buroCheck" elementFormDefault="qualified">
+			<xs:include schemaLocation="buroCheck.xsd"/>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="buroCheckMessageRequest">
+		<wsdl:part name="parameter" element="tns:request"/>
+	</wsdl:message>
+	<wsdl:message name="buroCheckMessageResponse">
+		<wsdl:part name="parameter" element="tns:response"/>
+	</wsdl:message>
+	<wsdl:portType name="buroCheckPortType">
+		<wsdl:operation name="buroCheckOperation">
+			<wsdl:input message="tns:buroCheckMessageRequest"/>
+			<wsdl:output message="tns:buroCheckMessageResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="buroCheckBinding" type="tns:buroCheckPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="buroCheckOperation">
+			<soap:operation soapAction="http://itq.edu/soa/buroCheck/buroCheckOperation"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="buroCheckService">
+		<wsdl:port name="buroCheckPort" binding="tns:buroCheckBinding">
+			<soap:address location="http://localhost:8080/axis2/services/buroCheckService"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

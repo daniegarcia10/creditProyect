@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) -->
+<serviceGroup>
+    <service name="buroCheckService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="edu.itq.soa.buroCheck.BuroCheckServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">edu.itq.soa.buroCheck.BuroCheckServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="buroCheckOperation" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://itq.edu/soa/buroCheck">
+            <actionMapping>http://itq.edu/soa/buroCheck/buroCheckOperation</actionMapping>
+            <outputActionMapping>http://itq.edu/soa/buroCheck/buroCheckPortType/buroCheckOperationResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://itq.edu/soa/buroCheck" xmlns:tns="http://itq.edu/soa/buroCheck">
+	<xs:element name="request">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="noTarjeta" type="tns:tarjeta"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+		<xs:element name="response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="valid" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+    </xs:element>
+    <xs:simpleType name="tarjeta">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{16}" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

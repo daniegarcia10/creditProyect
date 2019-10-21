@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://itq.edu/soa/credit" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://itq.edu/soa/credit">
+    <xs:element name="request">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="rfc" type="xs:string"/>
+                <xs:element name="noTarjeta" type="tns:tarjeta"/>
+                <xs:element name="domicilio">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="calle" type="xs:string"/>
+                            <xs:element name="numero" type="xs:int"/>
+                            <xs:element name="colonia" type="xs:string"/>
+                            <xs:element name="cp" type="tns:codigo"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="monto" type="xs:double"/>
+                <xs:element name="interes" type="xs:float"/>
+                <xs:element name="plazo" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="response">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="tarjeta">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{16}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="codigo">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{5}"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
