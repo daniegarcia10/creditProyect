@@ -43,9 +43,39 @@
               
                   if (
                   "http://itq.edu/soa/credit".equals(namespaceURI) &&
+                  "ack_type0".equals(typeName)){
+                   
+                            return  edu.itq.soa.credit.Ack_type0.Factory.parse(reader);
+                        
+
+                  }
+
+              
+                  if (
+                  "http://itq.edu/soa/credit".equals(namespaceURI) &&
+                  "amortization_type0".equals(typeName)){
+                   
+                            return  edu.itq.soa.credit.Amortization_type0.Factory.parse(reader);
+                        
+
+                  }
+
+              
+                  if (
+                  "http://itq.edu/soa/credit".equals(namespaceURI) &&
                   "tarjeta".equals(typeName)){
                    
                             return  edu.itq.soa.credit.Tarjeta.Factory.parse(reader);
+                        
+
+                  }
+
+              
+                  if (
+                  "http://itq.edu/soa/credit".equals(namespaceURI) &&
+                  "amortizationTable_type0".equals(typeName)){
+                   
+                            return  edu.itq.soa.credit.AmortizationTable_type0.Factory.parse(reader);
                         
 
                   }

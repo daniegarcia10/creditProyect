@@ -11,6 +11,7 @@ import java.rmi.RemoteException;
 
 import org.apache.axis2.AxisFault;
 
+import edu.itq.soa.amTable.AmortizationServiceStub;
 import edu.itq.soa.buroCheck.BuroCheckServiceStub;
 
 /**
@@ -28,8 +29,12 @@ public class CreditServiceImpl extends CreditServiceSkeleton{
 
     public Response creditOperation(Request request) {
         // TODO : fill this with the necessary business logic
+        Ack_type0 ack = new Ack_type0();
         Response response = new Response();
         try {
+            ack.setId("1");
+            ack.setDescription("Credito valido");
+            response.setAck(ack);
             BuroCheckServiceStub bStub = new BuroCheckServiceStub("http://localhost:8090/axis2/services/buroCheckService/");
             BuroCheckServiceStub.Request requestBuro = new BuroCheckServiceStub.Request();
             BuroCheckServiceStub.Tarjeta tarjeta = BuroCheckServiceStub.Tarjeta.Factory.fromString(request.getNoTarjeta().getTarjeta(),"");
@@ -37,9 +42,31 @@ public class CreditServiceImpl extends CreditServiceSkeleton{
             BuroCheckServiceStub.Response responseBuro = bStub.buroCheckOperation(requestBuro);
             if(responseBuro.getValid()) {
                 //TODO - AmTableResponse
-                response.setMessage("valido");
+                //response.setMessage("valido");
+                AmortizationServiceStub aStub = new AmortizationServiceStub("http://localhost:8080/amortizationService");
+                AmortizationServiceStub.Request requestAmor = new AmortizationServiceStub.Request();
+                requestAmor.setInterest(request.getInteres());
+                requestAmor.setQuantiti((float)request.getMonto());
+                requestAmor.setTime(request.getPlazo());
+                
+                AmortizationServiceStub.Response responseAmor =aStub.amortizationOperation(requestAmor);
+                responseAmor.getAmortizationTable().getAmortization();
+                AmortizationServiceStub.Amortization_type0[] filas_amor = responseAmor.getAmortizationTable().getAmortization();
+                AmortizationTable_type0 amTable = new AmortizationTable_type0();
+                for (AmortizationServiceStub.Amortization_type0 fila : filas_amor) {
+                    Amortization_type0 amortization = new Amortization_type0();
+                    amortization.setCapital(fila.getCapital());
+                    amortization.setMontoMensual(fila.getMontoMensual());
+                    amortization.setPagoCapital(fila.getPagoCapital());
+                    amortization.setPagoInteres(fila.getPagoInteres());
+                    amortization.setPeriodo(fila.getPeriodo());
+                    amTable.addAmortization(amortization);
+                }
+                response.setAmortizationTable(amTable);
             } else {
-                response.setMessage("no valido");
+                ack.setId("2");
+                ack.setDescription("Credito no valido");
+                response.setAck(ack);
                 throw new Exception ("Credito no valido");
             }
         } catch (AxisFault e) {

@@ -25,7 +25,32 @@
 	<xs:element name="response">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="message" type="xs:string"/>
+				<xs:element name="ack">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="id" type="xs:string"></xs:element>
+							<xs:element name="description" type="xs:string"></xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="amortizationTable"
+					minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="amortization" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="periodo" type="xs:int"></xs:element>
+										<xs:element name="capital" type="xs:double"></xs:element>
+										<xs:element name="pagoCapital" type="xs:double"></xs:element>
+										<xs:element name="pagoInteres" type="xs:double"></xs:element>
+										<xs:element name="montoMensual" type="xs:double"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
     </xs:element>

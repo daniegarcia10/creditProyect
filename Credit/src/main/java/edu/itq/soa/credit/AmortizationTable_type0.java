@@ -1,6 +1,6 @@
 
 /**
- * Response.java
+ * AmortizationTable_type0.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:34:40 IST)
@@ -11,91 +11,87 @@
             
 
             /**
-            *  Response bean class
+            *  AmortizationTable_type0 bean class
             */
             @SuppressWarnings({"unchecked","unused"})
         
-        public  class Response
+        public  class AmortizationTable_type0
         implements org.apache.axis2.databinding.ADBBean{
-        
-                public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-                "http://itq.edu/soa/credit",
-                "response",
-                "ns1");
-
+        /* This type was generated from the piece of schema that had
+                name = amortizationTable_type0
+                Namespace URI = http://itq.edu/soa/credit
+                Namespace Prefix = ns1
+                */
             
 
                         /**
-                        * field for Ack
+                        * field for Amortization
+                        * This was an Array!
                         */
 
                         
-                                    protected edu.itq.soa.credit.Ack_type0 localAck ;
+                                    protected edu.itq.soa.credit.Amortization_type0[] localAmortization ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return edu.itq.soa.credit.Ack_type0
+                           * @return edu.itq.soa.credit.Amortization_type0[]
                            */
-                           public  edu.itq.soa.credit.Ack_type0 getAck(){
-                               return localAck;
+                           public  edu.itq.soa.credit.Amortization_type0[] getAmortization(){
+                               return localAmortization;
                            }
 
                            
                         
-                            /**
-                               * Auto generated setter method
-                               * @param param Ack
+
+
+                               
+                              /**
+                               * validate the array for Amortization
                                */
-                               public void setAck(edu.itq.soa.credit.Ack_type0 param){
+                              protected void validateAmortization(edu.itq.soa.credit.Amortization_type0[] param){
+                             
+                              if ((param != null) && (param.length < 1)){
+                                throw new java.lang.RuntimeException();
+                              }
+                              
+                              }
+
+
+                             /**
+                              * Auto generated setter method
+                              * @param param Amortization
+                              */
+                              public void setAmortization(edu.itq.soa.credit.Amortization_type0[] param){
+                              
+                                   validateAmortization(param);
+
+                               
+                                      this.localAmortization=param;
+                              }
+
+                               
+                             
+                             /**
+                             * Auto generated add method for the array for convenience
+                             * @param param edu.itq.soa.credit.Amortization_type0
+                             */
+                             public void addAmortization(edu.itq.soa.credit.Amortization_type0 param){
+                                   if (localAmortization == null){
+                                   localAmortization = new edu.itq.soa.credit.Amortization_type0[]{};
+                                   }
+
                             
-                                            this.localAck=param;
-                                    
 
-                               }
-                            
+                               java.util.List list =
+                            org.apache.axis2.databinding.utils.ConverterUtil.toList(localAmortization);
+                               list.add(param);
+                               this.localAmortization =
+                             (edu.itq.soa.credit.Amortization_type0[])list.toArray(
+                            new edu.itq.soa.credit.Amortization_type0[list.size()]);
 
-                        /**
-                        * field for AmortizationTable
-                        */
-
-                        
-                                    protected edu.itq.soa.credit.AmortizationTable_type0 localAmortizationTable ;
-                                
-                           /*  This tracker boolean wil be used to detect whether the user called the set method
-                          *   for this attribute. It will be used to determine whether to include this field
-                           *   in the serialized XML
-                           */
-                           protected boolean localAmortizationTableTracker = false ;
-
-                           public boolean isAmortizationTableSpecified(){
-                               return localAmortizationTableTracker;
-                           }
-
-                           
-
-                           /**
-                           * Auto generated getter method
-                           * @return edu.itq.soa.credit.AmortizationTable_type0
-                           */
-                           public  edu.itq.soa.credit.AmortizationTable_type0 getAmortizationTable(){
-                               return localAmortizationTable;
-                           }
-
-                           
-                        
-                            /**
-                               * Auto generated setter method
-                               * @param param AmortizationTable
-                               */
-                               public void setAmortizationTable(edu.itq.soa.credit.AmortizationTable_type0 param){
-                            localAmortizationTableTracker = param != null;
-                                   
-                                            this.localAmortizationTable=param;
-                                    
-
-                               }
-                            
+                             }
+                             
 
      
      
@@ -112,8 +108,8 @@
 
         
                org.apache.axiom.om.OMDataSource dataSource =
-                       new org.apache.axis2.databinding.ADBDataSource(this,MY_QNAME);
-               return factory.createOMElement(dataSource,MY_QNAME);
+                       new org.apache.axis2.databinding.ADBDataSource(this,parentQName);
+               return factory.createOMElement(dataSource,parentQName);
             
         }
 
@@ -145,29 +141,35 @@
                    java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://itq.edu/soa/credit");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":response",
+                           namespacePrefix+":amortizationTable_type0",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "response",
+                           "amortizationTable_type0",
                            xmlWriter);
                    }
 
                
                    }
                
-                                            if (localAck==null){
-                                                 throw new org.apache.axis2.databinding.ADBException("ack cannot be null!!");
+                                       if (localAmortization!=null){
+                                            for (int i = 0;i < localAmortization.length;i++){
+                                                if (localAmortization[i] != null){
+                                                 localAmortization[i].serialize(new javax.xml.namespace.QName("http://itq.edu/soa/credit","amortization"),
+                                                           xmlWriter);
+                                                } else {
+                                                   
+                                                           throw new org.apache.axis2.databinding.ADBException("amortization cannot be null!!");
+                                                    
+                                                }
+
                                             }
-                                           localAck.serialize(new javax.xml.namespace.QName("http://itq.edu/soa/credit","ack"),
-                                               xmlWriter);
-                                         if (localAmortizationTableTracker){
-                                            if (localAmortizationTable==null){
-                                                 throw new org.apache.axis2.databinding.ADBException("amortizationTable cannot be null!!");
-                                            }
-                                           localAmortizationTable.serialize(new javax.xml.namespace.QName("http://itq.edu/soa/credit","amortizationTable"),
-                                               xmlWriter);
-                                        }
+                                     } else {
+                                        
+                                               throw new org.apache.axis2.databinding.ADBException("amortization cannot be null!!");
+                                        
+                                    }
+                                 
                     xmlWriter.writeEndElement();
                
 
@@ -353,24 +355,27 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                 
-                            elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/credit",
-                                                                      "ack"));
-                            
-                            
-                                    if (localAck==null){
-                                         throw new org.apache.axis2.databinding.ADBException("ack cannot be null!!");
+                             if (localAmortization!=null) {
+                                 for (int i = 0;i < localAmortization.length;i++){
+
+                                    if (localAmortization[i] != null){
+                                         elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/credit",
+                                                                          "amortization"));
+                                         elementList.add(localAmortization[i]);
+                                    } else {
+                                        
+                                               throw new org.apache.axis2.databinding.ADBException("amortization cannot be null !!");
+                                            
                                     }
-                                    elementList.add(localAck);
-                                 if (localAmortizationTableTracker){
-                            elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/credit",
-                                                                      "amortizationTable"));
-                            
-                            
-                                    if (localAmortizationTable==null){
-                                         throw new org.apache.axis2.databinding.ADBException("amortizationTable cannot be null!!");
-                                    }
-                                    elementList.add(localAmortizationTable);
-                                }
+
+                                 }
+                             } else {
+                                 
+                                        throw new org.apache.axis2.databinding.ADBException("amortization cannot be null!!");
+                                    
+                             }
+
+                        
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -395,9 +400,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static Response parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            Response object =
-                new Response();
+        public static AmortizationTable_type0 parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            AmortizationTable_type0 object =
+                new AmortizationTable_type0();
 
             int event;
             java.lang.String nillableValue = null;
@@ -421,10 +426,10 @@
 
                     java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"response".equals(type)){
+                            if (!"amortizationTable_type0".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (Response)edu.itq.soa.credit.ExtensionMapper.getTypeObject(
+                                return (AmortizationTable_type0)edu.itq.soa.credit.ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -446,37 +451,55 @@
                     
                     reader.next();
                 
+                        java.util.ArrayList list1 = new java.util.ArrayList();
+                    
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://itq.edu/soa/credit","ack").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://itq.edu/soa/credit","amortization").equals(reader.getName())){
                                 
-                                                object.setAck(edu.itq.soa.credit.Ack_type0.Factory.parse(reader));
-                                              
-                                        reader.next();
                                     
+                                    
+                                    // Process the array and step past its final element's end.
+                                    list1.add(edu.itq.soa.credit.Amortization_type0.Factory.parse(reader));
+                                                                
+                                                        //loop until we find a start element that is not part of this array
+                                                        boolean loopDone1 = false;
+                                                        while(!loopDone1){
+                                                            // We should be at the end element, but make sure
+                                                            while (!reader.isEndElement())
+                                                                reader.next();
+                                                            // Step out of this element
+                                                            reader.next();
+                                                            // Step to next element event.
+                                                            while (!reader.isStartElement() && !reader.isEndElement())
+                                                                reader.next();
+                                                            if (reader.isEndElement()){
+                                                                //two continuous end elements means we are exiting the xml structure
+                                                                loopDone1 = true;
+                                                            } else {
+                                                                if (new javax.xml.namespace.QName("http://itq.edu/soa/credit","amortization").equals(reader.getName())){
+                                                                    list1.add(edu.itq.soa.credit.Amortization_type0.Factory.parse(reader));
+                                                                        
+                                                                }else{
+                                                                    loopDone1 = true;
+                                                                }
+                                                            }
+                                                        }
+                                                        // call the converter utility  to convert and set the array
+                                                        
+                                                        object.setAmortization((edu.itq.soa.credit.Amortization_type0[])
+                                                            org.apache.axis2.databinding.utils.ConverterUtil.convertToArray(
+                                                                edu.itq.soa.credit.Amortization_type0.class,
+                                                                list1));
+                                                            
                               }  // End of if for expected property start element
                                 
                                 else{
                                     // A start element we are not expecting indicates an invalid parameter was passed
                                     throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
                                 }
-                            
-                                    
-                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
-                                
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://itq.edu/soa/credit","amortizationTable").equals(reader.getName())){
-                                
-                                                object.setAmortizationTable(edu.itq.soa.credit.AmortizationTable_type0.Factory.parse(reader));
-                                              
-                                        reader.next();
-                                    
-                              }  // End of if for expected property start element
-                                
-                                    else {
-                                        
-                                    }
-                                  
+                              
                             while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
                             
