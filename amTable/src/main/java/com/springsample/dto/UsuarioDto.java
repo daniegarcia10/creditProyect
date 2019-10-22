@@ -8,43 +8,43 @@ package com.springsample.dto;
  *
  */
 public class UsuarioDto {
-    private Integer time;
-    private Float interest;
-    private Float quantiti;
+    private Integer id;
+    private String login;
+    private String password;
     /**
      * @return the id
      */
-    public Integer getTime() {
-        return time;
+    public Integer getId() {
+        return id;
     }
     /**
      * @param id the id to set
      */
-    public void setTime(Integer time) {
-        this.time = time;
+    public void setId(Integer id) {
+        this.id = id;
     }
     /**
-     * @return the Interest
+     * @return the login
      */
-    public Float getInterest() {
-        return interest;
+    public String getLogin() {
+        return login;
     }
     /**
      * @param login the login to set
      */
-    public void setInterest(Float interest) {
-        this.interest = interest;
+    public void setLogin(String login) {
+        this.login = login;
     }
     /**
      * @return the password
      */
-    public Float getQuantiti() {
-        return quantiti;
+    public String getPassword() {
+        return password;
     }
     /**
      * @param password the password to set
      */
-    public void setQuantiti(Float quantiti) {
-        this.quantiti = quantiti;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
