@@ -12,24 +12,19 @@ public class AmorTableDto {
      * id es una combinacion de rfc mas la cantidad de veces que aparezca es rfc en
      * la tabla
      */
-    private String id;
+    private String idrfc;
     private String rfc;
     /**
      * fecha en la que se solicito la creacion de la tabla
      */
-    private String fecha;
-    
-    /**
-     * @return the id
-     */
     public String getId() {
-        return id;
+        return idrfc;
     }
     /**
      * @param id the id to set
      */
     public void setId(String id) {
-        this.id = id;
+        this.idrfc = id;
     }
     /**
      * @return the rfc
@@ -43,17 +38,4 @@ public class AmorTableDto {
     public void setRfc(String rfc) {
         this.rfc = rfc;
     }
-    /**
-     * @return the fecha
-     */
-    public String getFecha() {
-        return fecha;
-    }
-    /**
-     * @param fecha the fecha to set
-     */
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
 }

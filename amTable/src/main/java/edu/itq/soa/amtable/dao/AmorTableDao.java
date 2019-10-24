@@ -24,5 +24,16 @@ public class AmorTableDao {
         this.jdbcTemplate = jdbcTemplate;
     }
     
+    /**
+     * agrega el registro de una tabla en la tabla AmorTable
+     */
+    public void addNewTable(AmorTableDto amorTableDto) {
+        jdbcTemplate.execute("INSERT INTO amortization_table(idrfc, rfc) VALUES('"
+                + amorTableDto.getId() + "', '" + amorTableDto.getRfc()
+                + "')");
+    }
     
+    public int countCoincidencias(AmorTableDto amorTableDto) {
+        return jdbcTemplate.queryForInt("select count(*) from amortization_table where rfc = '" + amorTableDto.getRfc() + "';");
+    }
 }

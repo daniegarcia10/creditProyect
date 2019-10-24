@@ -5,6 +5,8 @@ package edu.itq.soa.amtable;
 
 import edu.itq.soa.amtable.dao.AmorTableDao;
 import edu.itq.soa.amtable.dao.AmortizationDao;
+import edu.itq.soa.amtable.dto.AmorTableDto;
+import edu.itq.soa.amtable.dto.AmortizationDto;
 
 /**
  * @author eduar
@@ -28,12 +30,20 @@ public class AmortizationServiceImpl extends AmortizationServiceSkeleton {
 
         AmortizationTable_type0 table = new AmortizationTable_type0();
         
+        AmortizationDto amortizationDto = new AmortizationDto();
+        AmorTableDto amorTableDto = new AmorTableDto();
+        
         double interes = request.getInterest() / 12 / 100;
         int totalPagos = request.getTime() * 12;
         double pagoMensual = request.getQuantiti() * ((interes * Math.pow(1 + interes, totalPagos)) / ( Math.pow(1+interes, totalPagos) - 1));
         pagoMensual = Math.floor(pagoMensual * 100) / 100;
         Amortization_type0[] amortization = new Amortization_type0[totalPagos];
         double restante = request.getQuantiti();
+        
+        amorTableDto.setRfc(request.getRfc());
+        amorTableDto.setId(request.getRfc() + amorTableDao.countCoincidencias(amorTableDto));
+        amorTableDao.addNewTable(amorTableDto);
+        
         for (int i = 0; i < totalPagos; i++) {
             amortization[i] = new Amortization_type0();
 
@@ -48,11 +58,20 @@ public class AmortizationServiceImpl extends AmortizationServiceSkeleton {
             if(Math.abs(restante) < 2)
                 restante = 0;
             amortization[i].setCapital(restante);
+            
+            amortizationDto.setIdrfc(amorTableDto.getRfc() + amorTableDao.countCoincidencias(amorTableDto));
+            amortizationDto.setCapitalRestante(amortization[i].getCapital());
+            amortizationDto.setPeriodo(i + 1);
+            amortizationDto.setAbonoCapital(amortization[i].getPagoCapital());
+            amortizationDto.setAbonoInteres(amortization[i].getPagoInteres());
+            amortizationDto.setPagoMensual(amortization[i].getMontoMensual());
+            
+            amortizationDao.addNewDetail(amortizationDto);
         }
         
         table.setAmortization(amortization);
-
         response.setAmortizationTable(table);
+        
         return response;
     }
 
