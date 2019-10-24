@@ -26,30 +26,30 @@ public class CreditServiceImpl extends CreditServiceSkeleton{
      * @return response
      * @throws RemoteException 
      */
-
+    AmortizationServiceStub amortizationServiceStub;
+    BuroCheckServiceStub buroCheckServiceStub;
+    
     public Response creditOperation(Request request) {
         // TODO : fill this with the necessary business logic
         Ack_type0 ack = new Ack_type0();
         Response response = new Response();
         try {
-            ack.setId("1");
+            ack.setId("200");
             ack.setDescription("Credito valido");
             response.setAck(ack);
-            BuroCheckServiceStub bStub = new BuroCheckServiceStub("http://localhost:8090/axis2/services/buroCheckService/");
             BuroCheckServiceStub.Request requestBuro = new BuroCheckServiceStub.Request();
             BuroCheckServiceStub.Tarjeta tarjeta = BuroCheckServiceStub.Tarjeta.Factory.fromString(request.getNoTarjeta().getTarjeta(),"");
             requestBuro.setNoTarjeta(tarjeta);
-            BuroCheckServiceStub.Response responseBuro = bStub.buroCheckOperation(requestBuro);
+            BuroCheckServiceStub.Response responseBuro = buroCheckServiceStub.buroCheckOperation(requestBuro);
             if(responseBuro.getValid()) {
-                //TODO - AmTableResponse
                 //response.setMessage("valido");
-                AmortizationServiceStub aStub = new AmortizationServiceStub("http://localhost:8080/amortizationService");
                 AmortizationServiceStub.Request requestAmor = new AmortizationServiceStub.Request();
                 requestAmor.setInterest(request.getInteres());
                 requestAmor.setQuantiti((float)request.getMonto());
                 requestAmor.setTime(request.getPlazo());
+                requestAmor.setRfc(request.getRfc());
                 
-                AmortizationServiceStub.Response responseAmor =aStub.amortizationOperation(requestAmor);
+                AmortizationServiceStub.Response responseAmor = amortizationServiceStub.amortizationOperation(requestAmor);
                 responseAmor.getAmortizationTable().getAmortization();
                 AmortizationServiceStub.Amortization_type0[] filas_amor = responseAmor.getAmortizationTable().getAmortization();
                 AmortizationTable_type0 amTable = new AmortizationTable_type0();
@@ -64,7 +64,7 @@ public class CreditServiceImpl extends CreditServiceSkeleton{
                 }
                 response.setAmortizationTable(amTable);
             } else {
-                ack.setId("2");
+                ack.setId("403");
                 ack.setDescription("Credito no valido");
                 response.setAck(ack);
                 throw new Exception ("Credito no valido");
@@ -82,4 +82,17 @@ public class CreditServiceImpl extends CreditServiceSkeleton{
         return response;
     }
 
+    /**
+     * @param amortizationServiceStub the amortizationServiceStub to set
+     */
+    public void setAmortizationServiceStub(AmortizationServiceStub amortizationServiceStub) {
+        this.amortizationServiceStub = amortizationServiceStub;
+    }
+
+    /**
+     * @param buroCheckServiceStub the buroCheckServiceStub to set
+     */
+    public void setBuroCheckServiceStub(BuroCheckServiceStub buroCheckServiceStub) {
+        this.buroCheckServiceStub = buroCheckServiceStub;
+    }
 }

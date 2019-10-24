@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://itq.edu/soa/amTable">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	targetNamespace="http://itq.edu/soa/amTable">
 	<xs:element name="request">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element name="rfc" type="xs:string"></xs:element>
 				<xs:element name="quantiti" type="xs:float"></xs:element>
 				<xs:element name="interest" type="xs:float"></xs:element>
 				<xs:element name="time" type="xs:int"></xs:element>
@@ -12,14 +15,29 @@
 	<xs:element name="response">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="amortization" maxOccurs="unbounded">
+				<xs:element name="ack">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="periodo" type="xs:int"></xs:element>
-							<xs:element name="capital" type="xs:float"></xs:element>
-							<xs:element name="pagoCapital" type="xs:float"></xs:element>
-							<xs:element name="pagoInteres" type="xs:float"></xs:element>
-							<xs:element name="montoMensual" type="xs:float"></xs:element>
+							<xs:element name="id" type="xs:string"></xs:element>
+							<xs:element name="description" type="xs:string"></xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="amortizationTable"
+					minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="amortization" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="periodo" type="xs:int"></xs:element>
+										<xs:element name="capital" type="xs:double"></xs:element>
+										<xs:element name="pagoCapital" type="xs:double"></xs:element>
+										<xs:element name="pagoInteres" type="xs:double"></xs:element>
+										<xs:element name="montoMensual" type="xs:double"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
