@@ -3,6 +3,7 @@
     <xs:element name="request">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="rfc" type="xs:string"/>
                 <xs:element name="quantiti" type="xs:float"/>
                 <xs:element name="interest" type="xs:float"/>
                 <xs:element name="time" type="xs:int"/>

@@ -26,6 +26,36 @@
             
 
                         /**
+                        * field for Rfc
+                        */
+
+                        
+                                    protected java.lang.String localRfc ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  java.lang.String getRfc(){
+                               return localRfc;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Rfc
+                               */
+                               public void setRfc(java.lang.String param){
+                            
+                                            this.localRfc=param;
+                                    
+
+                               }
+                            
+
+                        /**
                         * field for Quantiti
                         */
 
@@ -174,6 +204,24 @@
                
                    }
                
+                                    namespace = "http://itq.edu/soa/amTable";
+                                    writeStartElement(null, namespace, "rfc", xmlWriter);
+                             
+
+                                          if (localRfc==null){
+                                              // write the nil attribute
+                                              
+                                                     throw new org.apache.axis2.databinding.ADBException("rfc cannot be null!!");
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localRfc);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
                                     namespace = "http://itq.edu/soa/amTable";
                                     writeStartElement(null, namespace, "quantiti", xmlWriter);
                              
@@ -399,6 +447,15 @@
 
                 
                                       elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/amTable",
+                                                                      "rfc"));
+                                 
+                                        if (localRfc != null){
+                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRfc));
+                                        } else {
+                                           throw new org.apache.axis2.databinding.ADBException("rfc cannot be null!!");
+                                        }
+                                    
+                                      elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/amTable",
                                                                       "quantiti"));
                                  
                                 elementList.add(
@@ -491,6 +548,31 @@
                     
                     reader.next();
                 
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://itq.edu/soa/amTable","rfc").equals(reader.getName())){
+                                
+                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"rfc" +"  cannot be null");
+                                    }
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setRfc(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                              
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                            
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
