@@ -13,7 +13,7 @@
     http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">  
     
 	<bean id="amortizationServiceStub" class="edu.itq.soa.amTable.AmortizationServiceStub">
-		<constructor-arg type="java.lang.String" value="http://192.168.100.6:8080/axis2/services/amortizationService"/>
+		<constructor-arg type="java.lang.String" value="http://192.168.43.48:8080/axis2/services/amortizationService"/>
 	</bean>
 	<bean id="buroCheckServiceStub" class="edu.itq.soa.buroCheck.BuroCheckServiceStub">
 		<constructor-arg type="java.lang.String" value="http://localhost:8090/axis2/services/buroCheckService"/>
