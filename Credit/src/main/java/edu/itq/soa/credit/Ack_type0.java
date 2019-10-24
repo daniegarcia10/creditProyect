@@ -1,6 +1,6 @@
 
 /**
- * Response.java
+ * Ack_type0.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:34:40 IST)
@@ -11,87 +11,74 @@
             
 
             /**
-            *  Response bean class
+            *  Ack_type0 bean class
             */
             @SuppressWarnings({"unchecked","unused"})
         
-        public  class Response
+        public  class Ack_type0
         implements org.apache.axis2.databinding.ADBBean{
-        
-                public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-                "http://itq.edu/soa/credit",
-                "response",
-                "ns1");
-
+        /* This type was generated from the piece of schema that had
+                name = ack_type0
+                Namespace URI = http://itq.edu/soa/credit
+                Namespace Prefix = ns1
+                */
             
 
                         /**
-                        * field for Ack
+                        * field for Id
                         */
 
                         
-                                    protected edu.itq.soa.credit.Ack_type0 localAck ;
+                                    protected java.lang.String localId ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return edu.itq.soa.credit.Ack_type0
+                           * @return java.lang.String
                            */
-                           public  edu.itq.soa.credit.Ack_type0 getAck(){
-                               return localAck;
+                           public  java.lang.String getId(){
+                               return localId;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param Ack
+                               * @param param Id
                                */
-                               public void setAck(edu.itq.soa.credit.Ack_type0 param){
+                               public void setId(java.lang.String param){
                             
-                                            this.localAck=param;
+                                            this.localId=param;
                                     
 
                                }
                             
 
                         /**
-                        * field for AmortizationTable
+                        * field for Description
                         */
 
                         
-                                    protected edu.itq.soa.credit.AmortizationTable_type0 localAmortizationTable ;
+                                    protected java.lang.String localDescription ;
                                 
-                           /*  This tracker boolean wil be used to detect whether the user called the set method
-                          *   for this attribute. It will be used to determine whether to include this field
-                           *   in the serialized XML
-                           */
-                           protected boolean localAmortizationTableTracker = false ;
-
-                           public boolean isAmortizationTableSpecified(){
-                               return localAmortizationTableTracker;
-                           }
-
-                           
 
                            /**
                            * Auto generated getter method
-                           * @return edu.itq.soa.credit.AmortizationTable_type0
+                           * @return java.lang.String
                            */
-                           public  edu.itq.soa.credit.AmortizationTable_type0 getAmortizationTable(){
-                               return localAmortizationTable;
+                           public  java.lang.String getDescription(){
+                               return localDescription;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param AmortizationTable
+                               * @param param Description
                                */
-                               public void setAmortizationTable(edu.itq.soa.credit.AmortizationTable_type0 param){
-                            localAmortizationTableTracker = param != null;
-                                   
-                                            this.localAmortizationTable=param;
+                               public void setDescription(java.lang.String param){
+                            
+                                            this.localDescription=param;
                                     
 
                                }
@@ -112,8 +99,8 @@
 
         
                org.apache.axiom.om.OMDataSource dataSource =
-                       new org.apache.axis2.databinding.ADBDataSource(this,MY_QNAME);
-               return factory.createOMElement(dataSource,MY_QNAME);
+                       new org.apache.axis2.databinding.ADBDataSource(this,parentQName);
+               return factory.createOMElement(dataSource,parentQName);
             
         }
 
@@ -145,29 +132,53 @@
                    java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://itq.edu/soa/credit");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":response",
+                           namespacePrefix+":ack_type0",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "response",
+                           "ack_type0",
                            xmlWriter);
                    }
 
                
                    }
                
-                                            if (localAck==null){
-                                                 throw new org.apache.axis2.databinding.ADBException("ack cannot be null!!");
-                                            }
-                                           localAck.serialize(new javax.xml.namespace.QName("http://itq.edu/soa/credit","ack"),
-                                               xmlWriter);
-                                         if (localAmortizationTableTracker){
-                                            if (localAmortizationTable==null){
-                                                 throw new org.apache.axis2.databinding.ADBException("amortizationTable cannot be null!!");
-                                            }
-                                           localAmortizationTable.serialize(new javax.xml.namespace.QName("http://itq.edu/soa/credit","amortizationTable"),
-                                               xmlWriter);
-                                        }
+                                    namespace = "http://itq.edu/soa/credit";
+                                    writeStartElement(null, namespace, "id", xmlWriter);
+                             
+
+                                          if (localId==null){
+                                              // write the nil attribute
+                                              
+                                                     throw new org.apache.axis2.databinding.ADBException("id cannot be null!!");
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localId);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
+                                    namespace = "http://itq.edu/soa/credit";
+                                    writeStartElement(null, namespace, "description", xmlWriter);
+                             
+
+                                          if (localDescription==null){
+                                              // write the nil attribute
+                                              
+                                                     throw new org.apache.axis2.databinding.ADBException("description cannot be null!!");
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localDescription);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
                     xmlWriter.writeEndElement();
                
 
@@ -353,24 +364,24 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                 
-                            elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/credit",
-                                                                      "ack"));
-                            
-                            
-                                    if (localAck==null){
-                                         throw new org.apache.axis2.databinding.ADBException("ack cannot be null!!");
-                                    }
-                                    elementList.add(localAck);
-                                 if (localAmortizationTableTracker){
-                            elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/credit",
-                                                                      "amortizationTable"));
-                            
-                            
-                                    if (localAmortizationTable==null){
-                                         throw new org.apache.axis2.databinding.ADBException("amortizationTable cannot be null!!");
-                                    }
-                                    elementList.add(localAmortizationTable);
-                                }
+                                      elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/credit",
+                                                                      "id"));
+                                 
+                                        if (localId != null){
+                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localId));
+                                        } else {
+                                           throw new org.apache.axis2.databinding.ADBException("id cannot be null!!");
+                                        }
+                                    
+                                      elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/credit",
+                                                                      "description"));
+                                 
+                                        if (localDescription != null){
+                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDescription));
+                                        } else {
+                                           throw new org.apache.axis2.databinding.ADBException("description cannot be null!!");
+                                        }
+                                    
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -395,9 +406,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static Response parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            Response object =
-                new Response();
+        public static Ack_type0 parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            Ack_type0 object =
+                new Ack_type0();
 
             int event;
             java.lang.String nillableValue = null;
@@ -421,10 +432,10 @@
 
                     java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"response".equals(type)){
+                            if (!"ack_type0".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (Response)edu.itq.soa.credit.ExtensionMapper.getTypeObject(
+                                return (Ack_type0)edu.itq.soa.credit.ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -449,9 +460,18 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://itq.edu/soa/credit","ack").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://itq.edu/soa/credit","id").equals(reader.getName())){
                                 
-                                                object.setAck(edu.itq.soa.credit.Ack_type0.Factory.parse(reader));
+                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"id" +"  cannot be null");
+                                    }
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setId(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
                                               
                                         reader.next();
                                     
@@ -465,18 +485,28 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://itq.edu/soa/credit","amortizationTable").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://itq.edu/soa/credit","description").equals(reader.getName())){
                                 
-                                                object.setAmortizationTable(edu.itq.soa.credit.AmortizationTable_type0.Factory.parse(reader));
+                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"description" +"  cannot be null");
+                                    }
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setDescription(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
                                               
                                         reader.next();
                                     
                               }  // End of if for expected property start element
                                 
-                                    else {
-                                        
-                                    }
-                                  
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                              
                             while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
                             

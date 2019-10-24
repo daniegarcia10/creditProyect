@@ -26,30 +26,72 @@
             
 
                         /**
-                        * field for Message
+                        * field for Ack
                         */
 
                         
-                                    protected java.lang.String localMessage ;
+                                    protected edu.itq.soa.credit.Ack_type0 localAck ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return java.lang.String
+                           * @return edu.itq.soa.credit.Ack_type0
                            */
-                           public  java.lang.String getMessage(){
-                               return localMessage;
+                           public  edu.itq.soa.credit.Ack_type0 getAck(){
+                               return localAck;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param Message
+                               * @param param Ack
                                */
-                               public void setMessage(java.lang.String param){
+                               public void setAck(edu.itq.soa.credit.Ack_type0 param){
                             
-                                            this.localMessage=param;
+                                            this.localAck=param;
+                                    
+
+                               }
+                            
+
+                        /**
+                        * field for AmortizationTable
+                        */
+
+                        
+                                    protected edu.itq.soa.credit.AmortizationTable_type0 localAmortizationTable ;
+                                
+                           /*  This tracker boolean wil be used to detect whether the user called the set method
+                          *   for this attribute. It will be used to determine whether to include this field
+                           *   in the serialized XML
+                           */
+                           protected boolean localAmortizationTableTracker = false ;
+
+                           public boolean isAmortizationTableSpecified(){
+                               return localAmortizationTableTracker;
+                           }
+
+                           
+
+                           /**
+                           * Auto generated getter method
+                           * @return edu.itq.soa.credit.AmortizationTable_type0
+                           */
+                           public  edu.itq.soa.credit.AmortizationTable_type0 getAmortizationTable(){
+                               return localAmortizationTable;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param AmortizationTable
+                               */
+                               public void setAmortizationTable(edu.itq.soa.credit.AmortizationTable_type0 param){
+                            localAmortizationTableTracker = param != null;
+                                   
+                                            this.localAmortizationTable=param;
                                     
 
                                }
@@ -114,24 +156,18 @@
                
                    }
                
-                                    namespace = "http://itq.edu/soa/credit";
-                                    writeStartElement(null, namespace, "message", xmlWriter);
-                             
-
-                                          if (localMessage==null){
-                                              // write the nil attribute
-                                              
-                                                     throw new org.apache.axis2.databinding.ADBException("message cannot be null!!");
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localMessage);
-                                            
-                                          }
-                                    
-                                   xmlWriter.writeEndElement();
-                             
+                                            if (localAck==null){
+                                                 throw new org.apache.axis2.databinding.ADBException("ack cannot be null!!");
+                                            }
+                                           localAck.serialize(new javax.xml.namespace.QName("http://itq.edu/soa/credit","ack"),
+                                               xmlWriter);
+                                         if (localAmortizationTableTracker){
+                                            if (localAmortizationTable==null){
+                                                 throw new org.apache.axis2.databinding.ADBException("amortizationTable cannot be null!!");
+                                            }
+                                           localAmortizationTable.serialize(new javax.xml.namespace.QName("http://itq.edu/soa/credit","amortizationTable"),
+                                               xmlWriter);
+                                        }
                     xmlWriter.writeEndElement();
                
 
@@ -317,15 +353,24 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                 
-                                      elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/credit",
-                                                                      "message"));
-                                 
-                                        if (localMessage != null){
-                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localMessage));
-                                        } else {
-                                           throw new org.apache.axis2.databinding.ADBException("message cannot be null!!");
-                                        }
-                                    
+                            elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/credit",
+                                                                      "ack"));
+                            
+                            
+                                    if (localAck==null){
+                                         throw new org.apache.axis2.databinding.ADBException("ack cannot be null!!");
+                                    }
+                                    elementList.add(localAck);
+                                 if (localAmortizationTableTracker){
+                            elementList.add(new javax.xml.namespace.QName("http://itq.edu/soa/credit",
+                                                                      "amortizationTable"));
+                            
+                            
+                                    if (localAmortizationTable==null){
+                                         throw new org.apache.axis2.databinding.ADBException("amortizationTable cannot be null!!");
+                                    }
+                                    elementList.add(localAmortizationTable);
+                                }
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -404,18 +449,9 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://itq.edu/soa/credit","message").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://itq.edu/soa/credit","ack").equals(reader.getName())){
                                 
-                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"message" +"  cannot be null");
-                                    }
-                                    
-
-                                    java.lang.String content = reader.getElementText();
-                                    
-                                              object.setMessage(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                                object.setAck(edu.itq.soa.credit.Ack_type0.Factory.parse(reader));
                                               
                                         reader.next();
                                     
@@ -425,7 +461,22 @@
                                     // A start element we are not expecting indicates an invalid parameter was passed
                                     throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
                                 }
-                              
+                            
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://itq.edu/soa/credit","amortizationTable").equals(reader.getName())){
+                                
+                                                object.setAmortizationTable(edu.itq.soa.credit.AmortizationTable_type0.Factory.parse(reader));
+                                              
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                    else {
+                                        
+                                    }
+                                  
                             while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
                             
