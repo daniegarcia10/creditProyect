@@ -41,7 +41,8 @@ public class AmortizationServiceImpl extends AmortizationServiceSkeleton {
         double restante = request.getQuantiti();
         
         amorTableDto.setRfc(request.getRfc());
-        amorTableDto.setId(request.getRfc() + amorTableDao.countCoincidencias(amorTableDto));
+        int coincidencias = amorTableDao.countCoincidencias(amorTableDto);
+        amorTableDto.setId(request.getRfc() + coincidencias);
         amorTableDao.addNewTable(amorTableDto);
         
         for (int i = 0; i < totalPagos; i++) {
@@ -59,7 +60,7 @@ public class AmortizationServiceImpl extends AmortizationServiceSkeleton {
                 restante = 0;
             amortization[i].setCapital(restante);
             
-            amortizationDto.setIdrfc(amorTableDto.getRfc() + amorTableDao.countCoincidencias(amorTableDto));
+            amortizationDto.setIdrfc(amorTableDto.getRfc() + coincidencias );
             amortizationDto.setCapitalRestante(amortization[i].getCapital());
             amortizationDto.setPeriodo(i + 1);
             amortizationDto.setAbonoCapital(amortization[i].getPagoCapital());
